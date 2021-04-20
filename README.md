@@ -41,14 +41,31 @@ A glips of how this works is shown below. To watch high resolution vodes follow 
 
 
 ## Challenges
-Getting back to the original goal that is to navigate a four-wheeled robot on the provided desert environment. There are many challanges were faced while doing this. The first challenge was that sometimes the desert environment does not load properly. It might be because of a bug in Gazebo9. The second challange was faced when husky was spawned on the desert environment. Husky works fine with other worlds but it stops publishing the transforms when both are loaded at the same time. Figure -- shows the spawned husky on desert world. It can be seen from figure -- that husky is giving error and not publishig anythong which hindered it's navigation. 
+Getting back to the original goal that is to navigate a four-wheeled robot on the provided desert environment. There are many challanges were faced while doing this. The first challenge was that sometimes the desert environment does not load properly. It might be because of a bug in Gazebo9. The second challange was faced when husky was spawned on the desert environment. Husky works fine with other worlds (like showed in above section) but it stops publishing the transforms when both are loaded at the same time. Figure below left shows the spawned husky on desert world. It can be seen from figure below right that husky is giving error and not publishig anythong which hindered it's navigation. 
 
 
+![Desert husky](./figures/huskt_desert_collage.jpg)
+
+To reproduce this error, run the following commands (considering the you are in root directory of the repository).
+```
+cd learn_ws
+catkin_make
+source devel/setup.bash
+roslaunch gazebo_world_class_18 robo.launch 
+```
 
 
+### Potential Solutions to the Challenges
+The following things can be tried to solve the above said problems
+- Considering the problem with the 3D desert model: convert the .dae model into .dem (digital elevation map) using [this](http://gazebosim.org/tutorials/?tut=dem) and [this](https://gis.stackexchange.com/questions/110492/how-to-extract-dem-digital-elevation-model-from-3d-model) resource and then try loading the model and husky.
+- Debug husky's model files
+- Try a different robot instead of husky
 
 
+## Possible Approach to find the 30 deg Elevation
+There can be multiple solutions to avoid 30 degree elevation in the path planing.
+- One is to use 3D lidar of the robot and do the segmentation of the point-cloud to fit a plane in it. RANSAC (Random Sample Concensus) is good algorithm to fit the plane. After fitting the plane, its angle can be found from the horizontal axis and if it is more than 30 degrees then consider it as an obstacle in the path planing to avoid it.
+- Second approach can be to map the desired area using flying drons with 3D mounted lidar on them and save the whole map. This saved map can be processed and fed into path palnning to avoid the 30 degree elevation. 
 
-
-
-
+## Conclusion
+The goal was to do path planing of four-wheeled robot in a desert enviroment while avoiding the 30 degrees or more elevation. This goal is not fully acieved because of the limited time. But, everything is described including what are the challanges faced during this exercise and what could be the possible solutions to them. 
