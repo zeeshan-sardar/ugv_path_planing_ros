@@ -1,12 +1,14 @@
 # Robot Path Planning using ROS
 
 ## Introduction
-The goal is to simulate path planning of a four-wheeled robot in a 3D constructed a model of desert keeping in view the robot should not ascend the elevation of more than 30 degrees.  
+The goal is to simulate path planning of a four-wheeled robot in a 3D constructed model of desert keeping in view the robot should not ascend the elevation of more than 30 degrees $\alpha$.  
 This repository list describes the approaches used to solve this problem and the challenges being faced. So, the husky a well-known robot by clearpath robotics is used to simulate this whole scenario. First, the 3d desert model is loaded into the Gazebo simulation environment, and then husky is spawned on it. There were many challenges of simulating husky on the provided 3D model which is listed below in detail.  
 All of this is developed and tested with Ubuntu18, ROS Melodic, and Gazebo9.
 
 ## Loading 3D Model in Gazebo
-A 3D constructed model of the desert is provided to spawn the four-wheeled robot. Initially, the model was in .obj format which the gazebo does not support and has to be converted into a supported format. The model (.obj) is loaded into blended for the conversion, it was not in a correct pose and texture which are corrected. After the correction, it is saved as .dae (Collada) format which is supported by Gazebo. Figure -- shows the model in the blender before correction (left) and after correction (right). Figure -- shows the loaded model in Gazebo (saved as desert.world placed in models/worlds directory).
+A 3D constructed model of the desert is provided to spawn the four-wheeled robot. Initially, the model was in .obj format which the gazebo does not support and has to be converted into a supported format. The model (.obj) is loaded into blended for the conversion, it was not in a correct pose and texture which are corrected. After the correction, it is saved as .dae (Collada) format which is supported by Gazebo. Figure -- shows the model in the blender before correction (left) and after correction (right). Figure below shows the loaded model in Gazebo (saved as desert.world placed in models/worlds directory).
+
+![Desert in blender.](./figures/blender_desert_collage.png)
 
 
 ## Installing and Testing Husky
