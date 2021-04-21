@@ -6,13 +6,21 @@ This repository describes the approaches used to solve this problem and the chal
 All of this is developed and tested with Ubuntu18, ROS Melodic, and Gazebo9.
 
 ## Loading 3D Model in Gazebo
-A 3D constructed model of the desert is provided to spawn the four-wheeled robot. Initially, the model was in .obj format which Gazebo does not support and has to be converted into a supported format. The model (.obj) is loaded into blender for the conversion. Pose and texture are alos corrected during the conversion process. After the correction, it is saved as .dae (Collada) format which is supported by Gazebo. Figure below shows the model in the blender before correction (left) and after correction (right). The converted model is loaded in Gazebo which can seen in below standalone figure. To load the 3D model in gazebo, run the following command (after cd to root directory of repository).
+A 3D constructed model of the desert is provided to spawn the four-wheeled robot. Initially, the model was in .obj format which Gazebo does not support and has to be converted into a supported format. The model (.obj) is loaded into blender for the conversion. Pose and texture are alos corrected during the conversion process. After the correction, it is saved as .dae (Collada) format which is supported by Gazebo. Figure below shows the model in the blender before correction (left) and after correction (right). 
+
+![Desert in blender.](./figures/blender_desert_collage.png)
+
+
+The converted model is loaded in Gazebo which can seen in below standalone figure. To load the 3D model in gazebo, download the model from [here](https://drive.google.com/file/d/14egVJ8wagyBQwYHa2XO-8x4nkNHYniql/view?usp=sharing) and paste it in `learn_ws/src/ycb_benchmarks/models/desert/meshes` and run the following command (after cd to root directory of repository).
 ```
+cd ~/
+git clone https://github.com/zeeshan-sardar/robot_path_planing.git
+cd robot_path_planing
 gazebo learn_ws/src/gazebo_world_class_18/worldsgazebo.world 
 ```
 
-![Desert in blender.](./figures/blender_desert_collage.png)
-![Desert in blender.](./figures/desert_gazebo.png){ width=10% }
+
+![Desert in blender.](./figures/desert_gazebo.png)
 
 ## Installing and Testing Husky
 To install and simulate husky, run the following commands one by one.
@@ -53,7 +61,7 @@ Getting back to the original goal that is to navigate a four-wheeled robot on th
 
 To reproduce this error, run the following commands (considering you are in the root directory of the repository).
 ```
-cd learn_ws
+cd ~/robot_path_planing/learn_ws
 catkin_make
 source devel/setup.bash
 roslaunch gazebo_world_class_18 robo.launch 
