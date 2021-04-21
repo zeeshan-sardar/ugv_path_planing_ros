@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+  <world name="desert_world">
+    <include> <!-- Add in a light source -->
+      <uri>model://sun</uri>
+    </include>
+    <include> <!-- Add your custom model -->
+      <uri>model://desert</uri>
+      <name>desert</name>
+      <pose>0 0 1.5 0 0 0</pose>
+    </include>
+  </world>
+</sdf>
